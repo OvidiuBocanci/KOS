@@ -1,0 +1,203 @@
+/*Variables*/
+:root {
+    --main-color: #569999;
+    --hover-color: #477d7d;
+    --custom-font-size: 18px;
+    --custom-font-weight: 650;
+}
+
+
+/*################---NAVBAR---################*/
+
+a.navbar-brand {
+    color: #ffc107;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.navbar-nav li a.nav-link.active {
+    color: var(--main-color);
+    font-size: var(--custom-font-size);
+    font-weight: var(--custom-font-weight);
+
+}
+
+.navbar-nav li a.nav-link {
+    color: var(--main-color);
+    font-size: var(--custom-font-size);
+    font-weight: var(--custom-font-weight);
+}
+
+.navbar-nav a.nav-link.dropdown-toggle {
+    color: var(--main-color);
+    font-size: var(--custom-font-size);
+    font-weight: var(--custom-font-weight);
+}
+
+.navbar-nav li a.dropdown-item {
+    color: var(--main-color);
+}
+
+.navbar-nav li a.nav-link.disabled {
+    color: var(--main-color);
+    font-size: var(--custom-font-size);
+    font-weight: var(--custom-font-weight);
+}
+
+
+/*Hover*/
+
+a.navbar-brand:hover {
+    color: #dba504;
+}
+
+.navbar-nav li a.nav-link.active:hover {
+    color: var(--hover-color);
+}
+
+.navbar-nav li a.nav-link:hover {
+    color: var(--hover-color);
+}
+
+.navbar-nav a.nav-link.dropdown-toggle:hover {
+    color: var(--hover-color);
+}
+
+.navbar-nav a.dropdown-item:hover {
+    color: var(--hover-color);
+}
+
+
+/*################---body---################*/
+body {
+    background-color: #222426;
+    /*background-image: url("../images/1.jpg");*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    height: 100vh;
+}
+.custom-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 93vh;
+
+
+}
+
+
+
+/*####################---Homepage gym---###################*/
+.logo {
+    display: flex;
+    color: #ffc107;
+    font-weight: bold;
+    font-size: 350px;
+    font-style: italic;
+    background-clip: text;
+    -webkit-text-stroke-color: #808080;
+    -webkit-text-stroke-width: calc(1em/200);
+}
+
+.title1{
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    background-clip: text;
+    -webkit-text-stroke-color: #808080;
+    -webkit-text-stroke-width: calc(1em/40);
+}
+
+.one{
+    color: #ffc107;
+    background-clip: text;
+    -webkit-text-stroke-color: #808080 ;
+    -webkit-text-stroke-width: calc(1em/40);
+}
+.title2{
+    text-decoration: none;
+    background-color: #ffc107;
+    margin-top: 2px;
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: bold;
+    padding: 5px 15px;
+
+}
+
+.title2:hover{
+    font-size: 52px;
+    transform: translateY(0);
+    margin-top: 0;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /*background-color: rgba(45, 45, 39, 0.7);*/
+    z-index: -1;
+}
+
+video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+
+}
+/*###################---About gym---###################*/
+
+/*.about{*/
+/*    background-color: red;*/
+/*    width: 90vw;*/
+/*    height: 80vh;*/
+/*    margin: 5vh 5vw 5vh 5vw; !*t r b l*!*/
+
+/*    !*margin-left: 3vw;*!*/
+/*    !*margin-right: 5vw;*!*/
+/*    !*margin-bottom: 5vh;*!*/
+/*}*/
+
+.image_about{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+
+}
+
+.box{
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 60px;
+}
+.box1{
+
+    background-color: #22668d;
+    background-image: url("../images/7.jpg");
+    background-size: cover;
+    width: 28vw;
+    height: 80vh;
+}
+
+.box2{
+    background-color: #ffc107;
+    width: 72vw;
+    height: 80vh;
+}
+

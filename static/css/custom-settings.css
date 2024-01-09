@@ -1,0 +1,112 @@
+/*Variables*/
+:root {
+    --main-color: #ffc107;
+    --hover-color: #dba504;
+    --custom-font-size: 18px;
+    --custom-font-weight:650;
+}
+
+/*Text-color*/
+
+a.navbar-brand {
+    color: #ffc107;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.navbar-nav li a.nav-link.active {
+    color: var(--main-color);
+    font-size: var(--custom-font-size);
+    font-weight: var(--custom-font-weight);
+
+}
+
+.navbar-nav li a.nav-link {
+    color: var(--main-color);
+    font-size: var(--custom-font-size);
+    font-weight: var(--custom-font-weight);
+}
+
+.navbar-nav a.nav-link.dropdown-toggle {
+    color: var(--main-color);
+    font-size: var(--custom-font-size);
+    font-weight: var(--custom-font-weight);
+}
+
+.navbar-nav li a.dropdown-item {
+    color: var(--main-color);
+}
+
+.navbar-nav li a.nav-link.disabled {
+    color: var(--main-color);
+    font-size: var(--custom-font-size);
+    font-weight: var(--custom-font-weight);
+}
+
+
+/*Hover*/
+
+a.navbar-brand:hover {
+    color: #ffc107;
+}
+
+.navbar-nav li a.nav-link.active:hover {
+    color: var(--hover-color);
+}
+
+.navbar-nav li a.nav-link:hover {
+    color: var(--hover-color);
+}
+
+.navbar-nav a.nav-link.dropdown-toggle:hover {
+    color: var(--hover-color);
+}
+
+.navbar-nav a.dropdown-item:hover {
+    color: var(--hover-color);
+}
+
+.custom-background{
+    background-color: #22668d;
+}
+
+.hh {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: green;
+    border: 2px dotted red;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center ;
+}
+
+.card-image-size{
+    object-fit: cover;
+    height: 22rem;
+
+}
+
+.card-margin-hover a:hover{
+    border: 8px red;
+
+}
+
+
+body {
+
+    background: url('../images/background.jpg');
+    /*background: #fffadd;*/
+
+    background-size: cover;
+    align-content: center;
+    height: 100vh;
+
+}
+
+.custom-text{
+    color: #ffeebb;
+}

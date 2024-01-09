@@ -1,0 +1,26 @@
+{% extends 'basegym.html' %}
+
+{% load static %}
+{% block title %}Home page gym{% endblock %}
+
+{% block content %}
+
+
+    <div class="container-fluid custom-content">
+        <video autoplay loop muted src="{% static 'images/gym_video.mp4' %}">
+        </video>
+        <div class="overlay"></div>
+        <h1 class="logo">
+            K.OS
+        </h1>
+        <h2 class="title1">
+            ONE DAY OR DAY <span class="one">ONE</span>
+        </h2>
+        <a class="title2" href="">YOU DECIDE</a>
+
+
+    </div>
+
+
+
+{% endblock %}
