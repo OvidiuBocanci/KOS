@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "home",
     "home_gym",
-    "about_gym"
+    "about_gym",
+    "prices"
 
 ]
 
