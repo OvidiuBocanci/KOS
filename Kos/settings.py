@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     "home",
     "home_gym",
     "about_gym",
-    "prices"
+    "prices",
+    "member",
+    "userextend"
 
 ]
 
@@ -111,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Bucharest"
 
 USE_I18N = True
 
@@ -126,4 +128,13 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR), 'static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/homepagegym/'
+LOGOUT_REDIRECT_URL = '/login/'
+#
+# AUTH_USER_MODEL = 'userextend.CustomUser'  #pentru a putea adauga noi campuri in user model

@@ -1,0 +1,29 @@
+{% extends 'basegym.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+    <div class="container-fluid position-absolute top-50 start-50 translate-middle">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card border-0">
+                    <div class="card-header bg-warning text-white">
+                        <h4 class="text-center">Login</h4>
+                    </div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-warning text-white">Login</button>
+                            <a href="#" class="btn btn-secondary">Forgot your password?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

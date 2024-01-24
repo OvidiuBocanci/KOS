@@ -5,536 +5,132 @@
 
 {% block content %}
 
-    {# <h4 class="title-prices">Subscriptions</h4>#}
+
     <div class="title_container">
         <h4 class="title-prices">Subscriptions</h4>
+        {% if user.is_authenticated %}
+            {% if perms.prices.add_card %}
+                <a href="{% url 'create-card' %}" class="btn btn-success text-white">Create</a>
+            {% endif %}
+        {% endif %}
     </div>
 
 
 
-    <div class="container-fluid ml-0 mr-0">
+    <div class="container_prices">
 
-
-        <div class="row mt-5">
-
-            <div class="col-md-2 offset-md-0">
-                <div class="card_subscriptions">
-                    <div class="container_name_subs">
-                        <h5 class="name_subs">SEDINTA</h5>
-                        <h5 class="name_details">1 intrare pe zi</h5>
-                    </div>
-                    <div class="container_price">
-                        <div class="price_currency">
-                            <h5 class="price">45</h5>
-                            <h5 class="currency">RON</h5>
-                        </div>
-                        <h5 class="price_details">/INTRARE</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la orice ora</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces in zona de SPA (saune/jacuzzi)</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la antrenamentele de grup</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la indoor cycling</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la crossfit training</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Parcare gratuita</h5>
-                    </div>
-                    <div class="container_btn">
-                        <button>Buy Now</button>
-                    </div>
+        {% for card in all_cards %}
+            <div class="card_subscriptions">
+                <div class="container_name_subs">
+                    <h5 class="name_subs">{{ card.title }}</h5>
+                    <h5 class="name_details">{{ card.title_detail }}</h5>
                 </div>
-            </div>
-{####################################################################################################################}
-
-             <div class="col-md-2 offset-md-0">
-                <div class="card_subscriptions">
-                    <div class="container_name_subs">
-                        <h5 class="name_subs">HAPPY HOUR</h5>
-                        <h5 class="name_details">Abonament cu plata lunara</h5>
+                <div class="container_price">
+                    <div class="price_currency">
+                        <h5 class="price">{{ card.price }}</h5>
+                        <h5 class="currency">RON</h5>
                     </div>
-                    <div class="container_price">
-                        <div class="price_currency">
-                            <h5 class="price">139</h5>
-                            <h5 class="currency">RON</h5>
-                        </div>
-                        <h5 class="price_details">LUNAR</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces in interval 6:00-15:00</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces in zona de SPA (saune/jacuzzi)</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la antrenamentele de grup</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la indoor cycling</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la crossfit training</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Parcare gratuita</h5>
-                    </div>
-                    <div class="container_btn">
-                        <button>Buy Now</button>
-                    </div>
+                    <h5 class="price_details">{{ card.price_detail }}</h5>
                 </div>
-            </div>
-{####################################################################################################################}
 
-             <div class="col-md-2 offset-md-0">
-                <div class="card_subscriptions">
-                    <div class="container_name_subs">
-                        <h5 class="name_subs">K.OS PRIME</h5>
-                        <h5 class="name_details">Abonament cu plata lunara</h5>
-                    </div>
-                    <div class="container_price">
-                        <div class="price_currency">
-                            <h5 class="price">170</h5>
-                            <h5 class="currency">RON</h5>
-                        </div>
-                        <h5 class="price_details">LUNAR</h5>
-                    </div>
 
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
+                <div class="benefits">
+                    {% if card.benefit_1 %}
+                        <div class="content">
+                            <div class="icon_subs">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                     class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                                </svg>
+                            </div>
+                            <h5>{{ card.benefit_1 }}</h5>
                         </div>
-                        <h5>Acces la orice ora</h5>
-                    </div>
+                    {% endif %}
 
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
+                    {% if card.benefit_2 %}
+                        <div class="content">
+                            <div class="icon_subs">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                     class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                                </svg>
+                            </div>
+                            <h5>{{ card.benefit_2 }}</h5>
                         </div>
-                        <h5>Acces in zona de SPA (saune/jacuzzi)</h5>
-                    </div>
+                    {% endif %}
 
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
+                    {% if card.benefit_3 %}
+                        <div class="content">
+                            <div class="icon_subs">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                     class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                                </svg>
+                            </div>
+                            <h5>{{ card.benefit_3 }}</h5>
                         </div>
-                        <h5>Acces la antrenamentele de grup</h5>
-                    </div>
+                    {% endif %}
 
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
+                    {% if card.benefit_4 %}
+                        <div class="content">
+                            <div class="icon_subs">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                     class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                                </svg>
+                            </div>
+                            <h5>{{ card.benefit_4 }}</h5>
                         </div>
-                        <h5>Acces la indoor cycling</h5>
-                    </div>
+                    {% endif %}
 
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
+                    {% if card.benefit_5 %}
+                        <div class="content">
+                            <div class="icon_subs">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                     class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                                </svg>
+                            </div>
+                            <h5>{{ card.benefit_5 }}</h5>
                         </div>
-                        <h5>Acces la crossfit training</h5>
-                    </div>
+                    {% endif %}
 
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
+                    {% if card.benefit_6 %}
+                        <div class="content">
+                            <div class="icon_subs">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                     class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                                </svg>
+                            </div>
+                            <h5>{{ card.benefit_6 }}</h5>
                         </div>
-                        <h5>Parcare gratuita</h5>
-                    </div>
-                    <div class="container_btn">
-                        <button>Buy Now</button>
-                    </div>
+                    {% endif %}
                 </div>
-            </div>
-{####################################################################################################################}
-
-             <div class="col-md-2 offset-md-0">
-                <div class="card_subscriptions">
-                    <div class="container_name_subs">
-                        <h5 class="name_subs">STUDENT</h5>
-                        <h5 class="name_details">Abonament in baza legitimatiei de student</h5>
-                    </div>
-                    <div class="container_price">
-                        <div class="price_currency">
-                            <h5 class="price">150</h5>
-                            <h5 class="currency">RON</h5>
-                        </div>
-                        <h5 class="price_details">LUNAR</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la orice ora</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces in zona de SPA (saune/jacuzzi)</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la antrenamentele de grup</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la indoor cycling</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la crossfit training</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Parcare gratuita</h5>
-                    </div>
-                    <div class="container_btn">
-                        <button>Buy Now</button>
-                    </div>
+                <div class="container_btn">
+                    <a href="">Buy now</a>
                 </div>
+
+                {% if user.is_authenticated %}
+                    <div class="container_staff">
+                        {% if perms.prices.change_card %}
+                            <a href="{% url 'update-card' card.id %}" class="edit_staff">EDIT</a>
+                        {% endif %}
+                        {% if perms.prices.delete_card %}
+                            <a href="{% url 'delete-card' card.id %}" class="delete_staff">DELETE</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
             </div>
-{####################################################################################################################}
-             <div class="col-md-2 offset-md-0">
-                <div class="card_subscriptions">
-                    <div class="container_name_subs">
-                        <h5 class="name_subs">ONE 12 LUNI</h5>
-                        <h5 class="name_details">Abonament cu plata integrala - 1.680 lei</h5>
-                    </div>
-                    <div class="container_price">
-                        <div class="price_currency">
-                            <h5 class="price">140</h5>
-                            <h5 class="currency">RON</h5>
-                        </div>
-                        <h5 class="price_details">LUNAR</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la orice ora</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces in zona de SPA (saune/jacuzzi)</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la antrenamentele de grup</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la indoor cycling</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la crossfit training</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Parcare gratuita</h5>
-                    </div>
-                    <div class="container_btn">
-                        <button>Buy Now</button>
-                    </div>
-                </div>
-            </div>
-{####################################################################################################################}
-
-             <div class="col-md-2 offset-md-0">
-                <div class="card_subscriptions">
-                    <div class="container_name_subs">
-                        <h5 class="name_subs">ONE 6 LUNI</h5>
-                        <h5 class="name_details">Abonament cu plata integrala - 870 lei </h5>
-                    </div>
-                    <div class="container_price">
-                        <div class="price_currency">
-                            <h5 class="price">145</h5>
-                            <h5 class="currency">RON</h5>
-                        </div>
-                        <h5 class="price_details">LUNAR</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la orice ora</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces in zona de SPA (saune/jacuzzi)</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la antrenamentele de grup</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la indoor cycling</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Acces la crossfit training</h5>
-                    </div>
-
-                    <div class="content">
-                        <div class="icon_subs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                 class="bi bi-check-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                            </svg>
-                        </div>
-                        <h5>Parcare gratuita</h5>
-                    </div>
-                    <div class="container_btn">
-                        <button>Buy Now</button>
-                    </div>
-                </div>
-            </div>
-{####################################################################################################################}
+        {% endfor %}
 
 
-
-        </div>
     </div>
 
 

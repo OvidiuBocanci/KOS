@@ -16,7 +16,12 @@
         <h2 class="title1">
             ONE DAY OR DAY <span class="one">ONE</span>
         </h2>
-        <a class="title2" href="">YOU DECIDE</a>
+
+        {% if user.is_authenticated %}
+            <a class="title2" href="{% url 'prices' %}">YOU DECIDE</a>
+        {% else %}
+            <a class="title2" href="{% url 'login' %}">YOU DECIDE</a>
+        {% endif %}
 
 
     </div>
