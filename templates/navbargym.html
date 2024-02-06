@@ -18,6 +18,10 @@
                     <a class="nav-link" href="{% url 'prices' %}">Prices</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'classes' %}">Classes</a>
+                </li>
+
                 {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -34,22 +38,44 @@
                         </ul>
                     </li>
                 {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
+
             </ul>
 
             {% if  user.is_authenticated %}
-                <div>
-                    <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
-                        {% csrf_token %}
-                    </form>
-                    <a href="#" onclick="document.getElementById('logout-form').submit()" class="btn btn-secondary me-2">Logout</a>
+
+                <div class="dropdown me-2">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        {{ request.user.first_name }}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href={% url 'profile' %}>Profile</a></li>
+                        {% if perms.class_schedule.trainer_schedule %}
+                        <li><a class="dropdown-item" href={% url 'my-classes' %}>My classes</a></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href={% url 'password_change' %}>Change password</a></li>
+                        <li>
+{#                            metoda gasita pentru Logout (pentru ca cea initiala nu mergea)#}
+                            <div>
+                                <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+                                    {% csrf_token %}
+                                </form>
+                                <a href="#" onclick="document.getElementById('logout-form').submit()"
+                                   class="dropdown-item">Logout</a>
+                            </div>
+
+                        </li>
+
+                    </ul>
                 </div>
+
+
+
+
             {% else %}
                 <div>
                     <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
-                    <a href="{% url 'create_user' %}" class="btn btn-secondary me-2">Sign up</a>
+                    <a href="{% url 'create-user' %}" class="btn btn-secondary me-2">Sign up</a>
                 </div>
             {% endif %}
             <form class="d-flex" role="search">

@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     "about_gym",
     "prices",
     "member",
-    "userextend"
+    "userextend",
+    "class_schedule"
+
 
 ]
 

@@ -1,0 +1,67 @@
+{% extends 'basegym.html' %}
+{% load static %}
+
+{% block title %}My_classes{% endblock %}
+
+{% block content %}
+
+
+    <div class="title_container_myschedule">
+        <h4 class="title_schedule">My Schedule</h4>
+        {% if user.is_authenticated %}
+            {% if perms.class_schedule.add_classgym %}
+                <a href="{% url 'create-class' %}" class="btn btn-secondary">Create</a>
+            {% endif %}
+        {% endif %}
+    </div>
+
+
+    <div class="container_dates">
+
+        {% for date in tuple_list %}
+
+            <div class="card_date">
+                <div class="container_title_date">
+                    <h5>{{ date.0| date:'d.m.Y' }}</h5>
+                </div>
+                <div class="container_classes">
+                    {% for class in date.1 %}
+                        {% if  class.trainer_id == request.user.id %}
+
+                            <div class="container_class">
+                                <div class="title_class">
+                                    <h5>{{ class.title.upper }}</h5>
+                                </div>
+                                <div class="content_class">
+
+                                    <div class="trainer_class">
+                                        <h5>Trainer: {{ class.trainer.first_name }} {{ class.trainer.last_name }}</h5>
+                                        <h5>Ora: {{ class.time }}</h5>
+                                    </div>
+
+                                    {% if user.is_authenticated %}
+
+                                        {% if perms.class_schedule.change_classgym and perms.class_schedule.delete_classgym %}
+                                            <div class="buttons_class">
+                                                <a class="edit_delete" href="{% url 'update-class' class.id %}">Edit</a>
+                                                <a class="edit_delete" href="{% url 'delete-class' class.id %}">Delete</a>
+                                            </div>
+
+                                        {% endif %}
+
+                                    {% endif %}
+                                </div>
+                                <div class="spots_class">
+                                    <h5>Locuri disponibile: {{ class.people_nr }}</h5>
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+                </div>
+            </div>
+
+        {% endfor %}
+
+{% endblock %}

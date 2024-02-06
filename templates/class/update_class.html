@@ -1,0 +1,30 @@
+{% extends 'basegym.html' %}
+
+{% block title %}Update Class{% endblock %}
+
+{% block content %}
+    <div class="container-fluid " >
+        <div class="form_member">
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <br><br><br><br><br><br><br>
+                    <div class="card border-0" style="margin-top: 70px">
+                        <div class="card-header py-1" style="background-color: #ffc107; color: white">
+                            <h3 class="text-center">Update - {{ classgym.title.upper }}</h3>
+                        </div>
+                        <form method="post" enctype="multipart/form-data" class="form-inline">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                {{ form.as_p }}
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-warning text-white" >Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

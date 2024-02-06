@@ -1,0 +1,50 @@
+{% extends 'basegym.html' %}
+{% load static %}
+
+{% block title %}Classes{% endblock %}
+
+{% block content %}
+
+
+    <div class="title_container_schedule">
+        <h4 class="title_schedule">Schedule</h4>
+
+    </div>
+
+
+    <div class="container_dates">
+
+        {% for class in all_userschedule %}
+{#            <div class="card_date">#}
+{#                <div class="container_title_date">#}
+{#                    <h5>{{ element.time| date:'d.m.Y' }}</h5>#}
+{#                </div>#}
+{#                <div class="container_classes">#}
+{#                    {% for class in date.1 %}#}
+
+                        <div class="container_class">
+                            <div class="title_class">
+                                <h5>{{ class.joined_classes.title.upper }}</h5>
+                            </div>
+                            <div class="content_class">
+
+                                <div class="trainer_class">
+                                    <h5>Trainer: {{ class.joined_classes.trainer.first_name }} {{ class.joined_classes.trainer.last_name }}</h5>
+                                    <h5>Ora: {{ class.joined_classes.time }}</h5>
+                                </div>
+
+                            </div>
+                            <div class="spots_class">
+                                <h5>Locuri disponibile: {{ class.people_nr }}</h5>
+                            </div>
+                        </div>
+
+{##}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

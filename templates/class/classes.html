@@ -1,0 +1,59 @@
+{% extends 'basegym.html' %}
+{% load static %}
+
+{% block title %}Classes{% endblock %}
+
+{% block content %}
+
+
+    <div class="title_container_schedule">
+        <h4 class="title_schedule">Schedule</h4>
+
+    </div>
+
+
+    <div class="container_dates">
+
+        {% for date in tuple_list %}
+            <div class="card_date">
+                <div class="container_title_date">
+                    <h5>{{ date.0| date:'d.m.Y' }}</h5>
+                </div>
+                <div class="container_classes">
+                    {% for class in date.1 %}
+                        <div class="container_class">
+                            <div class="title_class">
+                                <h5>{{ class.title.upper }}</h5>
+                            </div>
+                            <div class="content_class">
+
+                                <div class="trainer_class">
+                                    <h5>Trainer: {{ class.trainer.first_name }} {{ class.trainer.last_name }}</h5>
+                                    <h5>Ora: {{ class.time }}</h5>
+                                </div>
+
+                                {% if user.is_authenticated %}
+                                    <div class="button_join">
+                                        <form action="{% url 'user-schedule' class.id %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="class_id" value="{{ class.id }}">
+                                            <button class="join_class" type="submit">Join</button>
+                                        </form>
+                                    </div>
+
+                                {% endif %}
+                            </div>
+                            <div class="spots_class">
+                                <h5>Locuri disponibile: {{ class.people_nr }}</h5>
+                            </div>
+                        </div>
+
+
+                    {% endfor %}
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}
