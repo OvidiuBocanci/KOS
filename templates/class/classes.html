@@ -14,13 +14,13 @@
 
     <div class="container_dates">
 
-        {% for date in tuple_list %}
+        {% for day in tuple_list %}
             <div class="card_date">
                 <div class="container_title_date">
-                    <h5>{{ date.0| date:'d.m.Y' }}</h5>
+                    <h5>{{ day.0| date:'d.m.Y' }}</h5>
                 </div>
                 <div class="container_classes">
-                    {% for class in date.1 %}
+                    {% for class in day.1 %}
                         <div class="container_class">
                             <div class="title_class">
                                 <h5>{{ class.title.upper }}</h5>
@@ -32,15 +32,43 @@
                                     <h5>Ora: {{ class.time }}</h5>
                                 </div>
 
-                                {% if user.is_authenticated %}
-                                    <div class="button_join">
-                                        <form action="{% url 'user-schedule' class.id %}" method="post">
+                                {% if class.id in user_schedule %}
+                                    <div class="button_cancel">
+                                        <form action="{% url 'classes' %}" method="post">
                                             {% csrf_token %}
+                                            <input type="hidden" name="action" value="cancel">
                                             <input type="hidden" name="class_id" value="{{ class.id }}">
-                                            <button class="join_class" type="submit">Join</button>
+                                            <button class="join_class" type="submit">Cancel</button>
                                         </form>
+
                                     </div>
 
+                                {% else %}
+                                    <div class="button_join">
+                                        {% if user.is_authenticated %}
+
+                                            {% if current_subscription.start_date <= class.date and class.date <= current_subscription.end_date or next_subscription.start_date <= class.date and class.date <= next_subscription.end_date %}
+
+                                                {% if class.people_nr >= 1 %}
+                                                    <form action="{% url 'classes' %}" method="post">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="action" value="join">
+                                                        <input type="hidden" name="class_id" value="{{ class.id }}">
+                                                        <button class="join_class" type="submit">Join</button>
+                                                    </form>
+                                                {% endif %}
+
+                                            {% else %}
+                                                {% if class.people_nr >= 1 %}
+                                                    <a class="join_class" href="{% url 'prices' %}">Join</a>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% else %}
+                                            {% if class.people_nr >= 1 %}
+                                                <a class="join_class" href="{% url 'login' %}">Join</a>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
                                 {% endif %}
                             </div>
                             <div class="spots_class">

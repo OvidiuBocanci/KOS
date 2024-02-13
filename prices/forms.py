@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import TextInput
+from django.forms import TextInput, NumberInput
 
 from prices.models import Card
 
@@ -7,17 +7,19 @@ from prices.models import Card
 class CardForm(forms.ModelForm):
     class Meta:
         model = Card
-        fields = '__all__'
+        exclude = ['display_price']
 
         widgets = {
             'title': TextInput(
                 attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the title'}),
             'title_detail': TextInput(
-                attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the title_detail'}),
-            'price': TextInput(
+                attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the title detail'}),
+            'price': NumberInput(
                 attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the price'}),
             'price_detail': TextInput(
-                attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the price_detail'}),
+                attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the price detail'}),
+            'period': NumberInput(
+                attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the days number'}),
             'benefit_1': TextInput(
                 attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the benefit_1'}),
             'benefit_2': TextInput(
@@ -37,17 +39,19 @@ class CardForm(forms.ModelForm):
 class CardUpdateForm(forms.ModelForm):
     class Meta:
         model = Card
-        fields = '__all__'
+        exclude = ['display_price']
 
         widgets = {
             'title': TextInput(
                 attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the title'}),
             'title_detail': TextInput(
                 attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the title_detail'}),
-            'price': TextInput(
+            'price': NumberInput(
                 attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the price'}),
             'price_detail': TextInput(
                 attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the price_detail'}),
+            'period': NumberInput(
+                attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the days number'}),
             'benefit_1': TextInput(
                 attrs={'class': 'form-control form-control-sm', 'placeholder': 'Please enter the benefit_1'}),
             'benefit_2': TextInput(

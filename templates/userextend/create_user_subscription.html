@@ -1,0 +1,55 @@
+{% extends 'basegym.html' %}
+
+{% block title %}Purchase Subscription{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="form_member">
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <br><br><br><br><br><br><br><br><br>
+
+                    <div class="card" style="border: 0;">
+                        <div class="card-header" style="background-color: #ffc107; color: white">
+                            <h3 class="text-center">Purchase Subscription</h3>
+                        </div>
+
+                        {% if two_active_subscriptions %}
+                            <div class="active_subscriptions">
+                                <h5 class="fs-3">You already have 2 active subscriptions</h5>
+                                <h5>Please check your Profile</h5>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="{% url 'profile' %}" class="btn btn-warning" style="color: white">Profile</a>
+                            </div>
+
+                        {% else %}
+                            <form method="post" enctype="multipart/form-data">
+                                <div class="ms-3 mt-3">
+                                    <label class="form-label ">Title: <span class="fw-bold fs-5">{{ card_title }}</span></label>
+                                </div>
+                                <div class="ms-3 mt-2">
+                                    <label class="form-label ">Period: <span class="fw-bold fs-5">{{ card_period }} (day/s)</span></label>
+                                </div>
+                                <div class="ms-3 mt-2">
+                                    <label class="form-label ">Price: <span
+                                            class="fw-bold fs-5">{{ card_price }} RON</span></label>
+                                </div>
+
+
+                                {% csrf_token %}
+                                <div class="card-body">
+                                    {{ form.as_p }}
+                                </div>
+                                <div class="card-footer text-center">
+                                    <button type="submit" class="btn btn-warning" style="color: white">Pay</button>
+                                </div>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

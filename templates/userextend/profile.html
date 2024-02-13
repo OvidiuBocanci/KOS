@@ -5,46 +5,60 @@
 
 {% block content %}
 
+    <div class="profilebox">
+        <div class="profilebox_left"></div>
+        <div class="profilebox_center">
+            <div class="title_profile">
+                <h1>Profile</h1>
+            </div>
+            <div class="card_div">
+                <div class="card_profile">
+                    <img src="{% static 'images/trainers/4.jpg' %}" alt="" class="">
+                    <h2 class="name_profile">{{ request.user.first_name }} {{ request.user.last_name }}</h2>
+                    <h2 class="text_subs_profile">Subscription: {{ current_subscription.subscription.title }}</h2>
+                    <h2 class="text_date_profile">Start date: {{ current_subscription.start_date| date:'d.m.Y' }}</h2>
+                    <h2 class="text_date_profile">End date: {{ current_subscription.end_date| date:'d.m.Y' }}</h2>
+                    <h2 class="text_next_subs_profile">Next
+                        subscription: {{ next_subscription.subscription.title }} {{ next_subscription.start_date| date:'d.m.Y' }} {{ next_subscription.end_date| date:'d.m.Y' }}</h2>
+                    <h2 class="text_classes_profile">Classes</h2>
+                    <div class="classes_profile">
+                        {% for class in user_classes %}
+                            <div class="container_class">
+                                <div class="title_class">
+                                    <h5>{{ class.joined_classes.title.upper }}-</h5>
+                                    <h5>{{ class.joined_classes.date| date:'d.m.Y' }}</h5>
+                                </div>
+                                <div class="content_class">
 
-    <div class="title_container_schedule">
-        <h4 class="title_schedule">Schedule</h4>
+                                    <div class="trainer_class">
+                                        <h5>
+                                            Trainer: {{ class.joined_classes.trainer.first_name }} {{ class.joined_classes.trainer.last_name }}</h5>
+                                        <h5>Ora: {{ class.joined_classes.time }}</h5>
+                                    </div>
+
+                                </div>
+                                <div class="spots_class">
+                                    <h5>Locuri disponibile: {{ class.joined_classes.people_nr }}</h5>
+                                </div>
+                            </div>
+
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="profilebox_right"></div>
+
 
     </div>
 
 
     <div class="container_dates">
 
-        {% for class in all_userschedule %}
-{#            <div class="card_date">#}
-{#                <div class="container_title_date">#}
-{#                    <h5>{{ element.time| date:'d.m.Y' }}</h5>#}
-{#                </div>#}
-{#                <div class="container_classes">#}
-{#                    {% for class in date.1 %}#}
 
-                        <div class="container_class">
-                            <div class="title_class">
-                                <h5>{{ class.joined_classes.title.upper }}</h5>
-                            </div>
-                            <div class="content_class">
-
-                                <div class="trainer_class">
-                                    <h5>Trainer: {{ class.joined_classes.trainer.first_name }} {{ class.joined_classes.trainer.last_name }}</h5>
-                                    <h5>Ora: {{ class.joined_classes.time }}</h5>
-                                </div>
-
-                            </div>
-                            <div class="spots_class">
-                                <h5>Locuri disponibile: {{ class.people_nr }}</h5>
-                            </div>
-                        </div>
-
-{##}
-{#                    {% endfor %}#}
-{#                </div>#}
-{#            </div>#}
-
-        {% endfor %}
     </div>
 
 {% endblock %}

@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import TextInput, DateInput, TimeInput, Select, NumberInput, HiddenInput
+from django.forms import DateInput, TimeInput, Select, NumberInput
 
 from class_schedule.models import ClassGym
 
@@ -16,7 +16,7 @@ class ClassGymForm(forms.ModelForm):
                 attrs={'class': 'form-select'}),
             'time': TimeInput(
                 attrs={'class': 'form-control', 'type': 'time'}),
-            'date': DateInput(attrs={'class': 'form-control', 'type': 'date', 'format': '%d %m %Y'}),
+            'date': DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'people_nr': NumberInput(attrs={'class': 'form-control'}),
 
         }
