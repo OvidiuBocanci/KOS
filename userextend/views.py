@@ -4,12 +4,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
-
+from django.views.generic import CreateView, ListView, FormView
 
 from prices.models import Card
-from userextend.forms import UserForm, UserSubscriptionForm
-from userextend.models import UserSchedule, UserSubscription
+from userextend.forms import UserForm, UserSubscriptionForm, UserPhotoForm
+from userextend.models import UserSchedule, UserSubscription, UserPhoto
 
 
 # Create your views here.
@@ -20,17 +19,22 @@ class UserCreateView(CreateView):
     form_class = UserForm
     success_url = reverse_lazy('login')
 
-class UserScheduleView(LoginRequiredMixin, ListView):
+class UserScheduleView(LoginRequiredMixin, ListView,  FormView):
     template_name = 'userextend/profile.html'
+    model = UserPhoto
+    form_class = UserPhotoForm
+    success_url = reverse_lazy('profile')
 
-    #PROFILE SUBSCRIPTIONS
+
 
     def get_queryset(self):
-        return UserSubscription.objects.filter(user_id=self.request.user.id).order_by('-end_date')[:2]
+        last_two_subscriptions = UserSubscription.objects.filter(user_id=self.request.user.id).order_by('-end_date')[:2]
+        last_photo = UserPhoto.objects.filter(user_id=self.request.user.id).order_by('-created_at').first()
+        return last_two_subscriptions, last_photo
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        last_subscriptions = self.get_queryset()
+        last_subscriptions = self.get_queryset()[0]
 
         if len(last_subscriptions) == 2:
             if last_subscriptions[1].end_date >= datetime.date.today():
@@ -60,7 +64,20 @@ class UserScheduleView(LoginRequiredMixin, ListView):
                 user_classes.append(user_class)
 
         context['user_classes'] = user_classes
+
+        last_photo = self.get_queryset()[1]
+        context['last_photo'] = last_photo
+        context['show_form'] = self.request.method == 'POST' or not last_photo
+        #afisare form UserPhotoForm
+        context['form'] = self.get_form()
         return context
+
+    def form_valid(self, form):
+        if form.is_valid():
+            new_subscription = form.save(commit=False)
+        form.instance.user = self.request.user
+        form.save()
+        return redirect('profile')
 
 class UserSubscriptionCreateView(LoginRequiredMixin, CreateView):
     template_name = 'userextend/create_user_subscription.html'

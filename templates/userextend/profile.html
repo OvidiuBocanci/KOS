@@ -1,7 +1,8 @@
 {% extends 'basegym.html' %}
 {% load static %}
 
-{% block title %}Classes{% endblock %}
+
+{% block title %}Profile{% endblock %}
 
 {% block content %}
 
@@ -13,7 +14,31 @@
             </div>
             <div class="card_div">
                 <div class="card_profile">
-                    <img src="{% static 'images/trainers/4.jpg' %}" alt="" class="">
+
+                    <div class="image_profile">
+                        {% if not last_photo %}
+                            <img src="{% static 'images/no-image.jpg' %}" alt="" class=""/>
+                            <div class="image_profile_form">
+                                <form method="post" enctype="multipart/form-data" class="form-inline">
+                                    {% csrf_token %}
+                                    <div class="form_body">
+                                        <div class="card-body">
+                                            {{ form.photo }}
+                                        </div>
+                                        <button type="submit" class="btn btn-warning btn-sm text-white">Save</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        {% else %}
+                            <img src="{{ last_photo.photo.url }}" alt="" class=""/>
+
+                        {% endif %}
+
+
+
+                    </div>
                     <h2 class="name_profile">{{ request.user.first_name }} {{ request.user.last_name }}</h2>
                     <h2 class="text_subs_profile">Subscription: {{ current_subscription.subscription.title }}</h2>
                     <h2 class="text_date_profile">Start date: {{ current_subscription.start_date| date:'d.m.Y' }}</h2>
@@ -28,9 +53,9 @@
                                     <h5>{{ class.joined_classes.title.upper }}-</h5>
                                     <h5>{{ class.joined_classes.date| date:'d.m.Y' }}</h5>
                                 </div>
-                                <div class="content_class">
+                                <div class="content_class_my_classes">
 
-                                    <div class="trainer_class">
+                                    <div class="trainer_class_my_classes">
                                         <h5>
                                             Trainer: {{ class.joined_classes.trainer.first_name }} {{ class.joined_classes.trainer.last_name }}</h5>
                                         <h5>Ora: {{ class.joined_classes.time }}</h5>

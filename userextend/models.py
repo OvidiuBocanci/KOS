@@ -27,3 +27,13 @@ class UserSubscription(models.Model):
 
     def __str__(self):
         return f'{self.user.first_name} {self.subscription}'
+
+class UserPhoto(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    photo = models.ImageField(upload_to='profile_users/', null=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.user.first_name

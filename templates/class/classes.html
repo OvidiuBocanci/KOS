@@ -7,7 +7,7 @@
 
 
     <div class="title_container_schedule">
-        <h4 class="title_schedule">Schedule</h4>
+        <h4 class="title_schedule">Classes</h4>
 
     </div>
 
@@ -28,47 +28,65 @@
                             <div class="content_class">
 
                                 <div class="trainer_class">
-                                    <h5>Trainer: {{ class.trainer.first_name }} {{ class.trainer.last_name }}</h5>
+                                    <h5>Trainer: {{ class.trainer.first_name }} {{ class.trainer.last_name.0 }}.</h5>
                                     <h5>Ora: {{ class.time }}</h5>
                                 </div>
 
                                 {% if class.id in user_schedule %}
-                                    <div class="button_cancel">
+                                    <div>
                                         <form action="{% url 'classes' %}" method="post">
                                             {% csrf_token %}
                                             <input type="hidden" name="action" value="cancel">
                                             <input type="hidden" name="class_id" value="{{ class.id }}">
-                                            <button class="join_class" type="submit">Cancel</button>
+                                            <button class="btn join_cancel_class" type="submit">Cancel</button>
                                         </form>
 
                                     </div>
 
                                 {% else %}
-                                    <div class="button_join">
+                                    {% if class.trainer != user %}
+
                                         {% if user.is_authenticated %}
 
-                                            {% if current_subscription.start_date <= class.date and class.date <= current_subscription.end_date or next_subscription.start_date <= class.date and class.date <= next_subscription.end_date %}
+                                            {% if perms.prices.add_card %}
 
                                                 {% if class.people_nr >= 1 %}
                                                     <form action="{% url 'classes' %}" method="post">
                                                         {% csrf_token %}
                                                         <input type="hidden" name="action" value="join">
                                                         <input type="hidden" name="class_id" value="{{ class.id }}">
-                                                        <button class="join_class" type="submit">Join</button>
+                                                        <button class="btn join_cancel_class" type="submit">Join
+                                                        </button>
+                                                    </form>
+                                                {% endif %}
+
+
+
+                                            {% elif current_subscription.start_date <= class.date and class.date <= current_subscription.end_date or next_subscription.start_date <= class.date and class.date <= next_subscription.end_date %}
+
+                                                {% if class.people_nr >= 1 %}
+                                                    <form action="{% url 'classes' %}" method="post">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="action" value="join">
+                                                        <input type="hidden" name="class_id" value="{{ class.id }}">
+                                                        <button class="btn join_cancel_class" type="submit">Join
+                                                        </button>
                                                     </form>
                                                 {% endif %}
 
                                             {% else %}
                                                 {% if class.people_nr >= 1 %}
-                                                    <a class="join_class" href="{% url 'prices' %}">Join</a>
+                                                    <a class="btn join_cancel_class"
+                                                       href="{% url 'prices' %}">Join</a>
                                                 {% endif %}
                                             {% endif %}
                                         {% else %}
                                             {% if class.people_nr >= 1 %}
-                                                <a class="join_class" href="{% url 'login' %}">Join</a>
+                                                <a class="btn join_cancel_class" href="{% url 'login' %}">Join</a>
                                             {% endif %}
                                         {% endif %}
-                                    </div>
+
+                                    {% endif %}
                                 {% endif %}
                             </div>
                             <div class="spots_class">

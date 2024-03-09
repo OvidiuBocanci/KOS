@@ -22,33 +22,17 @@
                     <a class="nav-link" href="{% url 'classes' %}">Classes</a>
                 </li>
 
-                {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Member
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'create-member' %}">Create member</a></li>
-                            <li><a class="dropdown-item" href="#">List of members</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                {% endif %}
 
             </ul>
 
             {% if  user.is_authenticated %}
 
-                <div class="dropdown me-2">
+                <div class="dropdown" style="margin-right: 1vw">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                         {{ request.user.first_name }}
                     </button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href={% url 'profile' %}>Profile</a></li>
                         {% if perms.class_schedule.trainer_schedule %}
                         <li><a class="dropdown-item" href={% url 'my-classes' %}>My classes</a></li>
@@ -72,16 +56,17 @@
 
 
 
+
             {% else %}
                 <div>
                     <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
                     <a href="{% url 'create-user' %}" class="btn btn-secondary me-2">Sign up</a>
                 </div>
             {% endif %}
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-warning" type="submit">Search</button>
-            </form>
+{#            <form class="d-flex" role="search">#}
+{#                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
+{#                <button class="btn btn-outline-warning" type="submit">Search</button>#}
+{#            </form>#}
         </div>
     </div>
 </nav>

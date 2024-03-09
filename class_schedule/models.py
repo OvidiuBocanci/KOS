@@ -23,15 +23,11 @@ class ClassGym(models.Model):
         ('zumba', 'Zumba')
     }
 
-
-
     title = models.CharField(choices=class_option, max_length=8)
     trainer = models.ForeignKey(User, on_delete=models.CASCADE)
     time = models.TimeField()
     date = models.DateField()
     people_nr = models.IntegerField(null=True)
-
-
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

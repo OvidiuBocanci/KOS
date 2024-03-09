@@ -29,7 +29,6 @@ urlpatterns = [
     path("", include('home_gym.urls')),
     path("", include('about_gym.urls')),
     path("", include('prices.urls')),
-    path("", include('member.urls')),
 
     path("login/", views.LoginView.as_view(form_class=AuthenticationNewForm), name="login"), #subscrie ce e pe linia urmatoare
     path("", include('django.contrib.auth.urls')),

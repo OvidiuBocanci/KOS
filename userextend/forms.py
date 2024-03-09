@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms import DateInput, NumberInput, TextInput
 
-from userextend.models import UserSubscription
+from userextend.models import UserSubscription, UserPhoto
 
 
 class AuthenticationNewForm(AuthenticationForm):
@@ -66,6 +66,12 @@ class UserSubscriptionForm(forms.ModelForm):
             msg = 'Nu ati acceptat termenii si conditiile'
             self._errors['terms_and_conditions'] = self.error_class([msg])
 
-
-
         return cleaned_data
+
+class UserPhotoForm(forms.ModelForm):
+    class Meta:
+        model = UserPhoto
+        fields = ['photo']
+        widgets = {
+            'photo': forms.FileInput(attrs={'class': 'form-control form-control-sm', 'accept': 'image/*'}),
+        }

@@ -103,6 +103,7 @@ class ClassListView(ListView):
         user_schedule = UserSchedule.objects.values_list('joined_classes_id',  flat=True).filter(user_id=self.request.user.id)
         context['user_schedule'] = user_schedule
 
+
         return context
 
 
@@ -128,7 +129,7 @@ class MyClassListView(LoginRequiredMixin,PermissionRequiredMixin,ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        dates = ClassGym.objects.filter(trainer_id=self.request.user.id).values_list('date', flat=True).distinct().order_by('date')
+        dates = (ClassGym.objects.filter(trainer_id=self.request.user.id).values_list('date', flat=True).distinct().order_by('date'))
         current_date = datetime.date.today()
 
         dates_classes = []
